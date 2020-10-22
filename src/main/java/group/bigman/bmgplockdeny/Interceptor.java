@@ -25,7 +25,7 @@ public class Interceptor {
             if(badWords.get(splitMessage[i]) != null){
                 splitMessage[i] = badWords.get(splitMessage[i]);
             }
-            newMessage.append(splitMessage[i]);
+            newMessage.append(splitMessage[i]).append(" ");
         }
 
         return newMessage.toString();
