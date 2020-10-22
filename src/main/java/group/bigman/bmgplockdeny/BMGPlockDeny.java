@@ -26,10 +26,12 @@ import java.net.MalformedURLException;
 public class BMGPlockDeny {
     RandomInsult randomInsult;
     RandomQuote randomQuote;
+    Interceptor interceptor;
 
     BMGPlockDeny() throws MalformedURLException{
         this.randomInsult = new RandomInsult();
         this.randomQuote = new RandomQuote();
+        this.interceptor = new Interceptor();
     }
 
     @Inject
@@ -51,5 +53,7 @@ public class BMGPlockDeny {
             Text insult = this.randomInsult.getRandomInsult();
             event.setMessage(insult);
         }
+
+        event.setMessage(Text.builder(this.interceptor.changeBadWord(event.getMessage().toPlain())));
     }
 }
